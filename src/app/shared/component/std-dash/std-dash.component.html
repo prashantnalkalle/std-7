@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <app-std-form [editObj]="editObj"
+            (emitnewStd)="onAdd($event)"
+            (emitupdatestd)="onUpdate($event)"></app-std-form>
+        </div>
+        <div class="col-md-8">
+            <app-std-list [stdArr]="stdArr"
+                (emitEditstd)="onEdit($event)"
+                (emitremoveId)="onRemove($event)"></app-std-list>
+        </div>
+    </div>
+</div>

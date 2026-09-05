@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Course</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of stdArr;let i =index;trackBy:trackbyId">
+                    <td>{{i+1}}</td>
+                    <td>{{std.name}}</td>
+                    <td>{{std.age}}</td>
+                    <td>{{std.mobile}}</td>
+                    <td>{{std.course}}</td>
+                    <td>
+                        <button 
+                            mat-raised-button
+                            color="primary"
+                            (click)="onEdit(std)">
+                            <mat-icon>edit</mat-icon>    
+                        </button>
+                    </td>
+                    <td>
+                        <button 
+                        mat-raised-button
+                        color="warn"
+                        (click)="onRemove(std.id)">
+                        <mat-icon>delete</mat-icon>    
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
