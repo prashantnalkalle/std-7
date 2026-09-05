@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Istudent } from '../../module/std';
 import { NgForm } from '@angular/forms';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-std-form',
@@ -15,7 +16,7 @@ export class StdFormComponent implements OnInit ,OnChanges {
   @Output() emitupdatestd:EventEmitter<Istudent> = new EventEmitter<Istudent>()
   @ViewChild('stdform') stdform!:NgForm
 
-  constructor() { }
+  constructor(private snackbar:SnackbarService) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +35,8 @@ export class StdFormComponent implements OnInit ,OnChanges {
       let newstd:Istudent={...this.stdform.value,id:Date.now()}
       this.stdform.reset()
       this.emitnewStd.emit(newstd)
+    }else{
+      this.snackbar.opensnackbar(`Please fill all fields!!`)
     }
   }
 
@@ -44,6 +47,8 @@ export class StdFormComponent implements OnInit ,OnChanges {
       this.iseditmode =false
       this.stdform.reset()
       this.emitupdatestd.emit(UpdateObj)
+    }else{
+      this.snackbar.opensnackbar(`Please fill all fields!!`)
     }
   }
 }
